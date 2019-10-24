@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     let OW_URL_BASE = "https://api.openweathermap.org/data/2.5/weather?lang=es&units=metric&appid=1adb13e22f23c3de1ca37f3be90763a9&q="
     let OW_URL_BASE_ICON = "https://openweathermap.org/img/w/"
+    
+    var textoDelegate = TextoDelegate()
 
     func consultarTiempo(localidad:String) {
         let urlString = OW_URL_BASE+localidad
@@ -54,6 +56,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //AQUI ESTOY SUPONIENDO QUE EL OUTLET DEL CAMPO TEXTO SE LLAMA ciudad
+        //CAMBIALO POR EL NOMBRE DEL TUYO
+        self.tiempoTextField.delegate = textoDelegate
     }
     @IBAction func botonTap(_ sender: Any) {
         if tiempoTextField.text != nil  {
