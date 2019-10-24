@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tiempoLabel: UILabel!
     @IBOutlet weak var tiempoTextField: UITextField!
     
+    
     let OW_URL_BASE = "https://api.openweathermap.org/data/2.5/weather?lang=es&units=metric&appid=1adb13e22f23c3de1ca37f3be90763a9&q="
     let OW_URL_BASE_ICON = "https://openweathermap.org/img/w/"
 
@@ -35,9 +36,13 @@ class ViewController: UIViewController {
                 OperationQueue.main.addOperation() {
                     self.tiempoImagen.image=imagenIcono
                     self.tiempoLabel.text=descripcion
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
                }
     }
+        OperationQueue.main.addOperation() {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
         dataTask.resume()
     }
     
